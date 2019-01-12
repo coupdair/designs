@@ -85,7 +85,7 @@ hook();
 module hookR() {
 translate([-hook_translate,0,0]) {
 hook();
-#hook_box();
+//#hook_box();
 }
 }//hookR
 
@@ -116,16 +116,36 @@ handlef_translateX=hook_translate-hook_in/2-thickness;
 handlef_translateY=0;
 sx=(hook_diameter/2-thickness/2)-(hook_in/2+thickness/2)+0.2;
 sy=hook_diameter-thickness;
+handle_fill(sx,sy);
+
+handlefr_translateX=hook_translate-hook_in/2-thickness;
+handlefr_translateY=hook_diameter/2-thickness/2-1;
+rotate([0,0,90]) handle_fill(sx,sy);
 module handle_fills() {
+//translate ones
 translate([handlef_translateX, handlef_translateY]) handle_fill(sx,sy);
 translate([handlef_translateX-thickness/2, handlef_translateY]) handle_fill(sx,sy);
 translate([-handlef_translateX, handlef_translateY]) handle_fill(sx,sy);
 translate([-handlef_translateX+thickness/2, handlef_translateY]) handle_fill(sx,sy);
+//rotate ones
+    translate([handlefr_translateX, handlefr_translateY])
+rotate([0,0,90]) handle_fill(sx,sy);
+    translate([handlefr_translateX, -handlefr_translateY])
+rotate([0,0,90]) handle_fill(sx,sy);
+    translate([-handlefr_translateX, handlefr_translateY])
+rotate([0,0,90]) handle_fill(sx,sy);
+    translate([-handlefr_translateX, -handlefr_translateY])
+rotate([0,0,90]) handle_fill(sx,sy);
 }//handle_fills
 
+
+module handles(){
 handle_fills();
 handle_borders();
+}
+
 hookL();
 hookR();
+handles();
 spacer() ;
 //#spacer_box() ;
