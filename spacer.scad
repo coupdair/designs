@@ -93,9 +93,9 @@ color("green")
    linear_extrude(height = 12, center = true, convexity = 10)
             circle(thickness/2);
 }
-module handle_fill() {
+module handle_fill(sx,sy) {
 color("red")
-  cube([(hook_diameter/2-thickness/2)-(hook_in/2+thickness/2)+0.2,12,thickness],true);
+  cube([sx,sy,thickness],true);
 }
 
 handle_border();
@@ -108,9 +108,11 @@ translate([-handle_translateX, handle_translateY]) handle_border();
 translate([handle_translateX, -handle_translateY]) handle_border();
 translate([-handle_translateX, -handle_translateY]) handle_border();
 
-handlef_translateX=diameter/2;
+handlef_translateX=diameter/2-thickness/2;
 handlef_translateY=0;
-translate([handlef_translateX, handlef_translateY]) handle_fill();
+sx=(hook_diameter/2-thickness/2)-(hook_in/2+thickness/2)+0.2;
+sy=hook_diameter-thickness;
+translate([handlef_translateX, handlef_translateY]) handle_fill(sx,sy);
 
 hookL();
 hookR();
