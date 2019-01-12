@@ -95,7 +95,7 @@ color("green")
 }
 module handle_fill() {
 color("red")
-  cube([12,6,thickness],true);
+  cube([(hook_diameter/2-thickness/2)-(hook_in/2+thickness/2)+0.2,12,thickness],true);
 }
 
 handle_border();
@@ -107,6 +107,10 @@ translate([handle_translateX, handle_translateY]) handle_border();
 translate([-handle_translateX, handle_translateY]) handle_border();
 translate([handle_translateX, -handle_translateY]) handle_border();
 translate([-handle_translateX, -handle_translateY]) handle_border();
+
+handlef_translateX=diameter/2;
+handlef_translateY=0;
+translate([handlef_translateX, handlef_translateY]) handle_fill();
 
 hookL();
 hookR();
