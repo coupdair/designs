@@ -100,8 +100,8 @@ color("red")
   cube([sx,sy,thickness],true);
 }
 
-handle_border();
-handle_fill();
+//handle_border();
+//handle_fill();
 
 handle_translateX=diameter/2;
 handle_translateY=hook_diameter/2-thickness/2;
@@ -116,11 +116,11 @@ handlef_translateX=hook_translate-hook_in/2-thickness;
 handlef_translateY=0;
 sx=(hook_diameter/2-thickness/2)-(hook_in/2+thickness/2)+0.2;
 sy=hook_diameter-thickness;
-handle_fill(sx,sy);
+//handle_fill(sx,sy);
 
 handlefr_translateX=hook_translate-hook_in/2-thickness;
 handlefr_translateY=hook_diameter/2-thickness/2-1;
-rotate([0,0,90]) handle_fill(sx,sy);
+//rotate([0,0,90]) handle_fill(sx,sy);
 module handle_fills() {
 //translate ones
 translate([handlef_translateX, handlef_translateY]) handle_fill(sx,sy);
