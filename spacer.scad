@@ -74,13 +74,41 @@ hook_in() ;
 }
 
 hook_translate=diameter/2+hook_diameter/2-thickness;
+module hookL() {
 translate([hook_translate,0,0]) {
 hook();
 //#hook_box();
 }
+}//hookL
+module hookR() {
 translate([-hook_translate,0,0]) {
 hook();
 #hook_box();
 }
+}//hookR
+
+module handle_border() {
+color("green")
+ rotate([90,0,90])
+   linear_extrude(height = 12, center = true, convexity = 10)
+            circle(thickness/2);
+}
+module handle_fill() {
+color("red")
+  cube([12,6,thickness],true);
+}
+
+handle_border();
+handle_fill();
+
+handle_translateX=diameter/2;
+handle_translateY=hook_diameter/2-thickness/2;
+translate([handle_translateX, handle_translateY]) handle_border();
+translate([-handle_translateX, handle_translateY]) handle_border();
+translate([handle_translateX, -handle_translateY]) handle_border();
+translate([-handle_translateX, -handle_translateY]) handle_border();
+
+hookL();
+hookR();
 spacer() ;
 //#spacer_box() ;
