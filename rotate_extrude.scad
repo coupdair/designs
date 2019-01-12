@@ -6,8 +6,18 @@ $fa = 2;    // Don't generate larger angles than 5 degrees
 
 thickness=3;
 diameter=46;
+hole_diameter=15;
 
-color("red")
+//spacer border
+color("green")
     rotate_extrude()
         translate([diameter/2-thickness, 0])
             circle(thickness/2);
+//spacer
+color("blue")
+  cylinder(h=thickness, r=diameter/2-thickness, center=true);
+ 
+ //hole
+color("red")
+  cylinder(h=thickness+0.1, r=hole_diameter/2, center=true);
+ 
