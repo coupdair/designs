@@ -58,12 +58,15 @@ color("blue")
             circle(thickness/2);
 }
 module hook_box() {
-    cylinder(h=thickness, r=hook_diameter/2, center=true);
+difference() {
+     cylinder(h=thickness, r=hook_diameter/2, center=true);
+     cylinder(h=thickness+0.1, r=hook_in/2, center=true);
+  }
 }
 
 hook_border() ;
 //translate([0,0,-thickness/2])  hook_ring() ;
-//hook_in() ;
+hook_in() ;
 #hook_box();
 
 //spacer() ;
