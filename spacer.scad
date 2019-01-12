@@ -45,10 +45,12 @@ color("green")
 }
 module hook_ring() {
 color("red")
- // difference() {
-    cylinder(h=thickness, r=hook_diameter/2/*-thickness/2*/, center=true);
-    cylinder(h=thickness, r=hook_in/2/*+thickness/2*/, center=true);
-//  }
+  difference() {
+    //outer
+    cylinder(h=thickness, r=hook_diameter/2-thickness/2+0.1, center=true);
+    //inner
+    cylinder(h=thickness+0.1, r=hook_in/2+thickness/2-0.1, center=true);
+  }
  }
 
 module hook_in() {
@@ -65,9 +67,9 @@ difference() {
 }
 
 hook_border() ;
-//translate([0,0,-thickness/2])  hook_ring() ;
+translate([0,0,-thickness/2])  hook_ring() ;
 hook_in() ;
-#hook_box();
+//#hook_box();
 
 //spacer() ;
 //#spacer_box() ;
