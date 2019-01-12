@@ -1,8 +1,8 @@
 echo(version=version());
 
 // Global resolution
-$fs = 0.1;  // Don't generate smaller facets than 0.1 mm
-$fa = 2;    // Don't generate larger angles than 5 degrees
+$fs = 0.1;  // Don't generate smaller facets than $fs mm, e.g. 0.1
+$fa = 2;    // Don't generate larger angles than $fa degrees, e.g. 5
 
 thickness=3;
 diameter=46;
@@ -25,4 +25,7 @@ color("red")
   cylinder(h=thickness+0.1, r=hole_diameter/2, center=true);
 }
 
-union() {spacer_center(); spacer_border()}
+difference() {
+  union() {spacer_center(); spacer_border();}
+  spacer_hole() ;
+}
