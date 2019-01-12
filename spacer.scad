@@ -7,6 +7,7 @@ $fa = 2;    // Don't generate larger angles than $fa degrees, e.g. 5
 thickness=3;
 diameter=46;
 hole_diameter=15;
+hook_diameter=16;
 
 module spacer_border() {
 color("green")
@@ -32,4 +33,12 @@ module spacer() {
   }//difference
 }//spacer
 
-spacer() ;
+module hook_border() {
+color("green")
+    rotate_extrude()
+        translate([hook_diameter/2-thickness, 0])
+            circle(thickness/2);
+}
+hook_border() ;
+
+//spacer() ;
