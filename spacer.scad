@@ -2,7 +2,7 @@ echo(version=version());
 
 // Global resolution
 $fs = 0.1;  // Don't generate smaller facets than $fs mm, e.g. 0.1
-$fa = 10;    // Don't generate larger angles than $fa degrees, e.g. 5
+$fa = 3;    // Don't generate larger angles than $fa degrees, e.g. 5
 
 thickness=3;
 //spacer
