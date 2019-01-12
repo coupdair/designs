@@ -65,11 +65,22 @@ difference() {
      cylinder(h=thickness+0.1, r=hook_in/2, center=true);
   }
 }
-
+module hook() {
+union(){
 hook_border() ;
-translate([0,0,-thickness/2])  hook_ring() ;
+hook_ring() ;
 hook_in() ;
-//#hook_box();
+}
+}
 
-//spacer() ;
+hook_translate=diameter/2+hook_diameter/2-thickness;
+translate([hook_translate,0,0]) {
+hook();
+//#hook_box();
+}
+translate([-hook_translate,0,0]) {
+hook();
+#hook_box();
+}
+spacer() ;
 //#spacer_box() ;
