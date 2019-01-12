@@ -5,8 +5,10 @@ $fs = 0.1;  // Don't generate smaller facets than $fs mm, e.g. 0.1
 $fa = 2;    // Don't generate larger angles than $fa degrees, e.g. 5
 
 thickness=3;
+//spacer
 diameter=46;
 hole_diameter=15;
+//hook
 hook_diameter=16;
 hook_in=6;
 
@@ -108,11 +110,14 @@ translate([-handle_translateX, handle_translateY]) handle_border();
 translate([handle_translateX, -handle_translateY]) handle_border();
 translate([-handle_translateX, -handle_translateY]) handle_border();
 
-handlef_translateX=diameter/2-thickness/2;
+handlef_translateX=hook_translate-hook_in/2-thickness;
 handlef_translateY=0;
 sx=(hook_diameter/2-thickness/2)-(hook_in/2+thickness/2)+0.2;
 sy=hook_diameter-thickness;
 translate([handlef_translateX, handlef_translateY]) handle_fill(sx,sy);
+translate([handlef_translateX-thickness/2, handlef_translateY]) handle_fill(sx,sy);
+translate([-handlef_translateX, handlef_translateY]) handle_fill(sx,sy);
+translate([-handlef_translateX+thickness/2, handlef_translateY]) handle_fill(sx,sy);
 
 hookL();
 hookR();
