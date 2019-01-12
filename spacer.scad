@@ -105,20 +105,26 @@ handle_fill();
 
 handle_translateX=diameter/2;
 handle_translateY=hook_diameter/2-thickness/2;
+module handle_borders() {
 translate([handle_translateX, handle_translateY]) handle_border();
 translate([-handle_translateX, handle_translateY]) handle_border();
 translate([handle_translateX, -handle_translateY]) handle_border();
 translate([-handle_translateX, -handle_translateY]) handle_border();
+}//handle_borders
 
 handlef_translateX=hook_translate-hook_in/2-thickness;
 handlef_translateY=0;
 sx=(hook_diameter/2-thickness/2)-(hook_in/2+thickness/2)+0.2;
 sy=hook_diameter-thickness;
+module handle_fills() {
 translate([handlef_translateX, handlef_translateY]) handle_fill(sx,sy);
 translate([handlef_translateX-thickness/2, handlef_translateY]) handle_fill(sx,sy);
 translate([-handlef_translateX, handlef_translateY]) handle_fill(sx,sy);
 translate([-handlef_translateX+thickness/2, handlef_translateY]) handle_fill(sx,sy);
+}//handle_fills
 
+handle_fills();
+handle_borders();
 hookL();
 hookR();
 spacer() ;
