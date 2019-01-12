@@ -8,16 +8,21 @@ thickness=3;
 diameter=46;
 hole_diameter=15;
 
-//spacer border
+module spacer_border() {
 color("green")
     rotate_extrude()
         translate([diameter/2-thickness, 0])
             circle(thickness/2);
-//spacer
+}
+
+module spacer_center() {
 color("blue")
   cylinder(h=thickness, r=diameter/2-thickness, center=true);
- 
- //hole
+ }
+
+module spacer_hole() {
 color("red")
   cylinder(h=thickness+0.1, r=hole_diameter/2, center=true);
- 
+}
+
+union() {spacer_center(); spacer_border()}
