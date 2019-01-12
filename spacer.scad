@@ -8,17 +8,18 @@ thickness=3;
 diameter=46;
 hole_diameter=15;
 hook_diameter=16;
+hook_in=6;
 
 module spacer_border() {
 color("green")
     rotate_extrude()
-        translate([diameter/2-thickness, 0])
+        translate([diameter/2-thickness/2, 0])
             circle(thickness/2);
 }
 
 module spacer_center() {
 color("blue")
-  cylinder(h=thickness, r=diameter/2-thickness, center=true);
+  cylinder(h=thickness, r=diameter/2-thickness/2, center=true);
  }
 
 module spacer_hole() {
@@ -32,13 +33,38 @@ module spacer() {
     spacer_hole() ;
   }//difference
 }//spacer
+module spacer_box() {
+    cylinder(h=thickness, r=diameter/2, center=true);
+}
 
 module hook_border() {
 color("green")
     rotate_extrude()
-        translate([hook_diameter/2-thickness, 0])
+        translate([hook_diameter/2-thickness/2, 0])
             circle(thickness/2);
 }
+module hook_ring() {
+color("red")
+ // difference() {
+    cylinder(h=thickness, r=hook_diameter/2/*-thickness/2*/, center=true);
+    cylinder(h=thickness, r=hook_in/2/*+thickness/2*/, center=true);
+//  }
+ }
+
+module hook_in() {
+color("blue")
+    rotate_extrude()
+        translate([hook_in/2+thickness/2, 0])
+            circle(thickness/2);
+}
+module hook_box() {
+    cylinder(h=thickness, r=hook_diameter/2, center=true);
+}
+
 hook_border() ;
+//translate([0,0,-thickness/2])  hook_ring() ;
+//hook_in() ;
+#hook_box();
 
 //spacer() ;
+//#spacer_box() ;
