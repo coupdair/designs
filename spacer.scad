@@ -25,7 +25,11 @@ color("red")
   cylinder(h=thickness+0.1, r=hole_diameter/2, center=true);
 }
 
-difference() {
-  union() {spacer_center(); spacer_border();}
-  spacer_hole() ;
-}
+module spacer() {
+  difference() {
+    union() {spacer_center(); spacer_border();}
+    spacer_hole() ;
+  }//difference
+}//spacer
+
+spacer() ;
