@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.0";
+version="v0.1.1d";
 
 ///OpenSCAD version
 echo(version=version());
@@ -22,8 +22,8 @@ module bbox()
   cube([width,height,thickness], center=true);
 }//bbox
 
-//! plane label
-module label()
+//! plane for label
+module plane()
 {
   east=-width/2+radius;
   ouest=width/2-radius;
@@ -43,7 +43,13 @@ module label()
     //uSD space
     translate([0,-(height-cheight)/2,-epsilon]) cube([cwidth,cheight,thickness+2*epsilon], center=true);
   }  
-}//label
+}//plane
 
 %bbox();
-label();
+difference()
+{
+  plane();
+  //text
+  color("Violet") translate([-width/2,-height/2+cheight,thickness/2-thickness/3]) linear_extrude(height=thickness)
+    text(text="PiPoE",size=6);
+}//difference label
