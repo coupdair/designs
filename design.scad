@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.1d";
+version="v0.1.1";
 
 ///OpenSCAD version
 echo(version=version());
@@ -51,5 +51,5 @@ difference()
   plane();
   //text
   color("Violet") translate([-width/2,-height/2+cheight,thickness/2-thickness/3]) linear_extrude(height=thickness)
-    text(text="PiPoE",size=6);
+    text(text="PiPoE  MCC2SA",size=6);
 }//difference label
