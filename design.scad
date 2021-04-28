@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.0e";
+version="v0.1.0f";
 
 ///OpenSCAD version
 echo(version=version());
@@ -28,7 +28,11 @@ module label()
   difference()
   {
     //plane
-    cube([width,height,thickness], center=true);
+//    cube([width,height,thickness], center=true);
+    hull()
+    {
+      cylinder(r=radius, h=thickness, center=true);
+    }
     //uSD space
     translate([0,-(height-cheight)/2,-epsilon]) cube([cwidth,cheight,thickness+2*epsilon], center=true);
   }  
