@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.0g";
+version="v0.1.0";
 
 ///OpenSCAD version
 echo(version=version());
@@ -35,7 +35,10 @@ module label()
 //    cube([width,height,thickness], center=true);
     hull()
     {
-      translate([east,south,0]) cylinder(r=radius, h=thickness, center=true);
+      translate([east,south ,0]) cylinder(r=radius, h=thickness, center=true);
+      translate([east,north ,0]) cylinder(r=radius, h=thickness, center=true);
+      translate([ouest,south,0]) cylinder(r=radius, h=thickness, center=true);
+      translate([ouest,north,0]) cylinder(r=radius, h=thickness, center=true);
     }
     //uSD space
     translate([0,-(height-cheight)/2,-epsilon]) cube([cwidth,cheight,thickness+2*epsilon], center=true);
