@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.1";
+version="v0.1.2d";
 
 ///OpenSCAD version
 echo(version=version());
@@ -45,11 +45,18 @@ module plane()
   }  
 }//plane
 
+//! text for label
+module label(text="PiPoE",size=6)
+{
+  translate([-width/2,-height/2+cheight,thickness/2-thickness/3]) linear_extrude(height=thickness)
+    text(text=text,size=size);
+}//label
+
 %bbox();
 difference()
 {
   plane();
   //text
-  color("Violet") translate([-width/2,-height/2+cheight,thickness/2-thickness/3]) linear_extrude(height=thickness)
-    text(text="PiPoE  MCC2SA",size=6);
+  color("Violet") translate([0,1,0])
+    label(text="PiPoE  MCC2SA",size=5);
 }//difference label
