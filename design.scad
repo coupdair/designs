@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.0f";
+version="v0.1.0g";
 
 ///OpenSCAD version
 echo(version=version());
@@ -25,13 +25,17 @@ module bbox()
 //! plane label
 module label()
 {
+  east=-width/2+radius;
+  ouest=width/2-radius;
+  south=-height/2+radius;
+  north=height/2-radius;
   difference()
   {
     //plane
 //    cube([width,height,thickness], center=true);
     hull()
     {
-      cylinder(r=radius, h=thickness, center=true);
+      translate([east,south,0]) cylinder(r=radius, h=thickness, center=true);
     }
     //uSD space
     translate([0,-(height-cheight)/2,-epsilon]) cube([cwidth,cheight,thickness+2*epsilon], center=true);
