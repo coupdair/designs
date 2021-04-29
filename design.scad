@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.2f";
+version="v0.1.2g";
 
 ///OpenSCAD version
 echo(version=version());
@@ -21,11 +21,38 @@ radius=2;
 w=62;
 h=16;
 t=1;
+cw=47;
+ch=8;
+cr=1;
 
 //! bounding box of face
 module face_bbox()
 {
   translate([0,-1,thickness/2+t/2]) cube([w,h,t], center=true);
+}//face_bbox
+
+//! face
+module face()
+{
+  east=-cw/2+cr;
+  ouest=cw/2-cr;
+  south=-ch/2+cr;
+  north=ch/2-cr;
+  translate([0,0,thickness/2+t/2])
+  difference()
+  {
+	//face
+    translate([0,-1,0]) cube([w,h,t], center=true);
+    //face cut
+    //cube([cw,ch,t], center=true);
+    hull()
+    {
+      translate([east,south ,0]) cylinder(r=cr, h=t, center=true);
+      translate([east,north ,0]) cylinder(r=cr, h=t, center=true);
+      translate([ouest,south,0]) cylinder(r=cr, h=t, center=true);
+      translate([ouest,north,0]) cylinder(r=cr, h=t, center=true);
+    }//hull
+  }
 }//face_bbox
 
 //! bounding box
@@ -75,4 +102,5 @@ difference()
 }//difference label
 
 //face
-%face_bbox();
+//%face_bbox();
+face();
