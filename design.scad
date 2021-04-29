@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.2h";
+version="v0.1.2";
 
 ///OpenSCAD version
 echo(version=version());
@@ -10,8 +10,10 @@ $fa = 3;    // Don't generate larger angles than $fa degrees, e.g. 5
 epsilon=0.123;
 
 //option
-//with_face=true;
-with_face=false;
+with_face=true;
+//with_face=false;
+with_bbox=false;
+//with_bbox=true;
 
 ///label
 thickness=3;
@@ -51,10 +53,10 @@ module face()
     //cube([cw,ch,t], center=true);
     hull()
     {
-      translate([east,south ,0]) cylinder(r=cr, h=t, center=true);
-      translate([east,north ,0]) cylinder(r=cr, h=t, center=true);
-      translate([ouest,south,0]) cylinder(r=cr, h=t, center=true);
-      translate([ouest,north,0]) cylinder(r=cr, h=t, center=true);
+      translate([east,south ,-epsilon]) cylinder(r=cr, h=t+2*epsilon, center=true);
+      translate([east,north ,-epsilon]) cylinder(r=cr, h=t+2*epsilon, center=true);
+      translate([ouest,south,-epsilon]) cylinder(r=cr, h=t+2*epsilon, center=true);
+      translate([ouest,north,-epsilon]) cylinder(r=cr, h=t+2*epsilon, center=true);
     }//hull
   }
 }//face_bbox
@@ -96,7 +98,7 @@ module label(text="PiPoE",size=6)
 }//label
 
 //label plane
-%bbox();
+if(with_bbox==true) %bbox();
 difference()
 {
   plane();
@@ -105,9 +107,9 @@ difference()
     label(text="PiPoE  MCC2SA",size=4.5);
 }//difference label
 
+//face
 if(with_face==true)
 {
-//face
-%face_bbox();
+if(with_bbox==true) %face_bbox();
 face();
 }//face
