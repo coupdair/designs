@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.2g";
+version="v0.1.2h";
 
 ///OpenSCAD version
 echo(version=version());
@@ -8,6 +8,10 @@ echo(version=version());
 $fs = 0.1;  // Don't generate smaller facets than $fs mm, e.g. 0.1
 $fa = 3;    // Don't generate larger angles than $fa degrees, e.g. 5
 epsilon=0.123;
+
+//option
+//with_face=true;
+with_face=false;
 
 ///label
 thickness=3;
@@ -101,6 +105,9 @@ difference()
     label(text="PiPoE  MCC2SA",size=4.5);
 }//difference label
 
+if(with_face==true)
+{
 //face
-//%face_bbox();
+%face_bbox();
 face();
+}//face
