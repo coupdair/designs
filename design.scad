@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.2d";
+version="v0.1.2e";
 
 ///OpenSCAD version
 echo(version=version());
@@ -57,6 +57,6 @@ difference()
 {
   plane();
   //text
-  color("Violet") translate([0,1,0])
-    label(text="PiPoE  MCC2SA",size=5);
+  color("Violet") translate([2,1,0])
+    label(text="PiPoE  MCC2SA",size=4.5);
 }//difference label
