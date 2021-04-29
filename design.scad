@@ -1,5 +1,5 @@
 ///Version
-version="v0.1.2e";
+version="v0.1.2f";
 
 ///OpenSCAD version
 echo(version=version());
@@ -9,12 +9,24 @@ $fs = 0.1;  // Don't generate smaller facets than $fs mm, e.g. 0.1
 $fa = 3;    // Don't generate larger angles than $fa degrees, e.g. 5
 epsilon=0.123;
 
+///label
 thickness=3;
 width=50;
 height=10;
 cwidth=14;
 cheight=3;
 radius=2;
+
+///box face
+w=62;
+h=16;
+t=1;
+
+//! bounding box of face
+module face_bbox()
+{
+  translate([0,-1,thickness/2+t/2]) cube([w,h,t], center=true);
+}//face_bbox
 
 //! bounding box
 module bbox()
@@ -52,6 +64,7 @@ module label(text="PiPoE",size=6)
     text(text=text,size=size);
 }//label
 
+//label plane
 %bbox();
 difference()
 {
@@ -60,3 +73,6 @@ difference()
   color("Violet") translate([2,1,0])
     label(text="PiPoE  MCC2SA",size=4.5);
 }//difference label
+
+//face
+%face_bbox();
