@@ -24,10 +24,11 @@ or
 
 ## done
 
-- `make image`
+- draw box that hiddes !
+- smaller letter size, so it is visible (edges are not visible)
 
 ## todo
 
 - design version on hidden face
-- smaller letter size, so it is visible (edges are not visible)
-- draw box that hiddes !
+- design integrated LED holes (e.g. to see uSD access or Linux heartbeat)
+
