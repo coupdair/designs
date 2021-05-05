@@ -6,11 +6,17 @@ or
 
 `openscad design.scad &`
 
-![design](design.png)
-
-## view
+## design image
 
 `make image`
+
+![design](design.png)
+
+## embedded view
+
+`make view`
+
+![view of label with box face](view.png)
 
 # print
 
