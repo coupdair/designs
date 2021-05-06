@@ -1,4 +1,6 @@
-echo(version=version());
+version="v1.0.0";
+
+echo(openscad_version=version());
 
 // Global resolution
 $fs = 0.1;  // Don't generate smaller facets than $fs mm, e.g. 0.1
