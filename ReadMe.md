@@ -35,6 +35,7 @@ or
 
 ## todo
 
+- add CI for GitHub and GitLab
 - design version on hidden face
 - design integrated LED holes (e.g. to see uSD access or Linux heartbeat)
 
