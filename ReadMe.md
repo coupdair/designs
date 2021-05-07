@@ -1,3 +1,15 @@
+<!--- begin@of@TOC --->
+# Table of contents
+
+1. [design](#design)
+     1. [design image](#design-image)
+     1. [embedded view](#embedded-view)
+1. [print](#print)
+1. [repository](#repository)
+1. [progress](#progress)
+     1. [done](#done)
+     1. [todo](#todo)
+<!--- end@of@TOC --->
 # design
 
 `make design`
